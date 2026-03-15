@@ -34,7 +34,7 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#F6F6F2] font-sans">
+    <div className="min-h-screen w-full bg-[#F6F6F2] font-sans overflow-x-hidden">
       <div className="bg-white shadow-sm px-8 py-4 flex justify-between items-center border-b border-[#BADFE7]/30">
         <h1 className="font-extrabold text-[#388087] text-xl uppercase tracking-widest">Dashboard</h1>
         <div className="flex items-center gap-6">

@@ -21,7 +21,6 @@ const Login = () => {
         body: JSON.stringify({ email, password }),
       });
       const data = await res.json();
-
       if (res.ok) {
         login(data);
         navigate('/dashboard');
@@ -29,37 +28,56 @@ const Login = () => {
         setError(data.message || 'Login failed');
       }
     } catch (err) {
-      setError('Server error. Please try again later.');
+      setError('Server error. Please try again.');
     } finally {
       setIsLoading(false);
     }
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-[#F6F6F2] font-sans py-12 px-4">
-      <div className="max-w-md w-full bg-white shadow-md border border-[#BADFE7]/30 p-10">
-        <div className="mb-8 text-center">
-          <h2 className="text-3xl font-extrabold text-[#388087] uppercase tracking-wide">Login</h2>
+    <div className="flex h-screen w-screen items-center justify-center bg-[#F6F6F2]">
+      <div className="w-full max-w-md bg-white p-10 shadow-2xl border border-[#BADFE7]/40">
+        <div className="mb-10 text-center">
+          <h2 className="text-4xl font-extrabold text-[#388087] uppercase tracking-tighter">Login</h2>
         </div>
+        
         <form className="space-y-6" onSubmit={handleLogin}>
           {error && <div className="bg-red-50 text-red-500 p-3 text-sm border border-red-100">{error}</div>}
+          
           <div className="space-y-4">
             <div>
-              <label className="block text-xs font-bold text-[#388087] uppercase tracking-wide mb-1">Email address</label>
-              <input type="email" required className="appearance-none block w-full px-3 py-3 border border-[#BADFE7] bg-[#F6F6F2]/50 focus:bg-white focus:outline-none focus:border-[#6FB3B8] text-[#388087]" value={email} onChange={(e) => setEmail(e.target.value)} />
+              <label className="block text-xs font-bold text-[#388087] uppercase tracking-widest mb-2">Email Address</label>
+              <input 
+                type="email" 
+                required 
+                className="w-full px-4 py-3 border border-[#BADFE7] bg-[#F6F6F2]/30 focus:bg-white focus:outline-none focus:border-[#6FB3B8] text-[#388087] transition-all" 
+                value={email} 
+                onChange={(e) => setEmail(e.target.value)} 
+              />
             </div>
             <div>
-              <label className="block text-xs font-bold text-[#388087] uppercase tracking-wide mb-1">Password</label>
-              <input type="password" required className="appearance-none block w-full px-3 py-3 border border-[#BADFE7] bg-[#F6F6F2]/50 focus:bg-white focus:outline-none focus:border-[#6FB3B8] text-[#388087]" value={password} onChange={(e) => setPassword(e.target.value)} />
+              <label className="block text-xs font-bold text-[#388087] uppercase tracking-widest mb-2">Password</label>
+              <input 
+                type="password" 
+                required 
+                className="w-full px-4 py-3 border border-[#BADFE7] bg-[#F6F6F2]/30 focus:bg-white focus:outline-none focus:border-[#6FB3B8] text-[#388087] transition-all" 
+                value={password} 
+                onChange={(e) => setPassword(e.target.value)} 
+              />
             </div>
           </div>
-          <button type="submit" disabled={isLoading} className="w-full flex justify-center py-4 px-4 text-sm font-bold text-white bg-[#6FB3B8] hover:bg-[#388087] transition-colors uppercase tracking-widest disabled:opacity-50">
-            {isLoading ? 'Logging in...' : 'Sign in'}
+
+          <button 
+            type="submit" 
+            disabled={isLoading} 
+            className="w-full py-4 text-sm font-bold text-white bg-[#6FB3B8] hover:bg-[#388087] transition-all uppercase tracking-[0.2em] shadow-lg disabled:opacity-50"
+          >
+            {isLoading ? 'Processing...' : 'Sign In'}
           </button>
         </form>
-        <div className="mt-6 text-center text-sm">
-          <span className="text-[#388087]">Don't have an account? </span>
-          <Link to="/signup" className="font-bold text-[#6FB3B8] hover:text-[#388087] uppercase transition-colors">Sign up</Link>
+
+        <div className="mt-8 text-center text-xs tracking-widest uppercase text-[#388087]">
+          Don't have an account? <Link to="/signup" className="font-bold text-[#6FB3B8] hover:underline">Sign Up</Link>
         </div>
       </div>
     </div>

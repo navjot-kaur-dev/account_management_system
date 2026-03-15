@@ -22,7 +22,6 @@ const Signup = () => {
         body: JSON.stringify({ name, email, password }),
       });
       const data = await res.json();
-      
       if (res.ok) {
         login(data);
         navigate('/dashboard');
@@ -37,34 +36,34 @@ const Signup = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-[#F6F6F2] font-sans py-12 px-4">
-      <div className="max-w-md w-full bg-white shadow-md border border-[#BADFE7]/30 p-10">
+    <div className="h-screen w-screen flex items-center justify-center bg-[#F6F6F2] font-sans overflow-hidden m-0 p-0">
+      <div className="max-w-md w-full bg-white shadow-2xl border border-[#BADFE7]/30 p-10 mx-4">
         <div className="mb-8 text-center">
-          <h2 className="text-3xl font-extrabold text-[#388087] uppercase tracking-wide">Sign Up</h2>
+          <h2 className="text-4xl font-extrabold text-[#388087] uppercase tracking-tighter">Sign Up</h2>
         </div>
         <form className="space-y-6" onSubmit={handleSignup}>
           {error && <div className="bg-red-50 text-red-500 p-3 text-sm border border-red-100">{error}</div>}
           <div className="space-y-4">
             <div>
-              <label className="block text-xs font-bold text-[#388087] uppercase tracking-wide mb-1">Full Name</label>
+              <label className="block text-xs font-bold text-[#388087] uppercase tracking-widest mb-1">Full Name</label>
               <input type="text" required className="appearance-none block w-full px-3 py-3 border border-[#BADFE7] bg-[#F6F6F2]/50 focus:bg-white focus:outline-none focus:border-[#6FB3B8] text-[#388087]" value={name} onChange={(e) => setName(e.target.value)} />
             </div>
             <div>
-              <label className="block text-xs font-bold text-[#388087] uppercase tracking-wide mb-1">Email address</label>
+              <label className="block text-xs font-bold text-[#388087] uppercase tracking-widest mb-1">Email Address</label>
               <input type="email" required className="appearance-none block w-full px-3 py-3 border border-[#BADFE7] bg-[#F6F6F2]/50 focus:bg-white focus:outline-none focus:border-[#6FB3B8] text-[#388087]" value={email} onChange={(e) => setEmail(e.target.value)} />
             </div>
             <div>
-              <label className="block text-xs font-bold text-[#388087] uppercase tracking-wide mb-1">Password</label>
+              <label className="block text-xs font-bold text-[#388087] uppercase tracking-widest mb-1">Password</label>
               <input type="password" required className="appearance-none block w-full px-3 py-3 border border-[#BADFE7] bg-[#F6F6F2]/50 focus:bg-white focus:outline-none focus:border-[#6FB3B8] text-[#388087]" value={password} onChange={(e) => setPassword(e.target.value)} />
             </div>
           </div>
-          <button type="submit" disabled={isLoading} className="w-full flex justify-center py-4 px-4 text-sm font-bold text-white bg-[#6FB3B8] hover:bg-[#388087] transition-colors uppercase tracking-widest disabled:opacity-50">
+          <button type="submit" disabled={isLoading} className="w-full flex justify-center py-4 px-4 text-sm font-bold text-white bg-[#6FB3B8] hover:bg-[#388087] transition-all uppercase tracking-[0.2em] disabled:opacity-50 shadow-lg shadow-[#6FB3B8]/20">
             {isLoading ? 'Processing...' : 'Register'}
           </button>
         </form>
-        <div className="mt-6 text-center text-sm">
+        <div className="mt-8 text-center text-xs tracking-widest uppercase">
           <span className="text-[#388087]">Already have an account? </span>
-          <Link to="/login" className="font-bold text-[#6FB3B8] hover:text-[#388087] uppercase transition-colors">Log in</Link>
+          <Link to="/login" className="font-bold text-[#6FB3B8] hover:text-[#388087] transition-colors">Log In</Link>
         </div>
       </div>
     </div>
